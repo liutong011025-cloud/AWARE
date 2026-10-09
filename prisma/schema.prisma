@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AuthSession {
+  tokenHash String @id @map("token_hash")
+  username  String
+  expires   BigInt
+
+  @@map("auth_sessions")
+}
+
+model LoginAttempt {
+  key      String @id
+  attempts Int
+  since    BigInt
+
+  @@map("login_attempts")
+}
+
+model SourceSet {
+  id          String            @id
+  data        String
+  updated     BigInt
+  assignments StudyAssignment[]
+
+  @@map("source_sets")
+}
+
+model StudyAssignment {
+  username    String    @id
+  condition   String
+  sourceSetId String    @map("source_set_id")
+  updated     BigInt
+  sourceSet   SourceSet @relation(fields: [sourceSetId], references: [id])
+
+  @@map("study_assignments")
+}
+
+model WritingSession {
+  id          String  @id
+  username    String
+  html        String  @default("")
+  plainText   String  @default("") @map("plain_text")
+  status      String  @default("active")
+  revision    Int     @default(0)
+  elapsed     Int     @default(0)
+  created     BigInt
+  updated     BigInt
+  condition   String?
+  sourceSetId String? @map("source_set_id")
+  sourceData  String? @map("source_data")
+  taskTitle   String? @map("task_title")
+  events      Event[]
+
+  @@index([username], map: "sessions_user")
+  @@map("writing_sessions")
+}
+
+model Event {
+  id        String         @id
+  sessionId String         @map("session_id")
+  username  String
+  type      String
+  payload   String
+  created   BigInt
+  session   WritingSession @relation(fields: [sessionId], references: [id])
+
+  @@index([sessionId], map: "events_session")
+  @@map("events")
+}
