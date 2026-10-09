@@ -1,0 +1,90 @@
+/* Stable centre, quiet quotations appearing in the surrounding white space. */
+.login-page.login-constellation { grid-template-columns: minmax(0, 1.55fr) minmax(390px, 1fr); }
+.login-constellation .thought-story { padding: 36px 6% 24px; overflow: hidden; }
+.thought-header { display: flex; align-items: center; gap: 32px; }
+.thought-header .brand-logo { width: 205px; }
+.thought-header-rule { height: 1px; flex: 1; background: #e2e7e4; }
+.thought-stage { position: relative; isolation: isolate; flex: 1; width: 100%; max-width: 960px; margin: 24px auto 16px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: minmax(175px, 1fr) auto minmax(150px, 1fr); column-gap: 40px; row-gap: 26px; }
+.thought-center { grid-column: 1 / -1; grid-row: 2; text-align: center; z-index: 1; padding: 18px 0 22px; }
+.thought-center .eyebrow { color: #77827e; font-size: 12px; font-weight: 500; letter-spacing: .13em; }
+.thought-story .thought-center h1 { font-size: clamp(42px, 4.35vw, 70px); font-weight: 500; line-height: 1.08; letter-spacing: -.055em; margin: 22px 0 25px; }
+.thought-story .thought-center h1 span { color: #286e5d; }
+.thought-underline { display: block; width: 70px; height: 2px; background: #c48652; margin: auto; }
+.thought-quote { position: relative; align-self: center; width: 100%; max-width: 330px; margin: 0; padding-left: 17px; border-left: 1px solid #b7c9c0; color: #526660; opacity: 0; visibility: hidden; animation: thought-appear 24.5s ease-in-out infinite both; }
+.thought-quote blockquote { margin: 0; font-size: clamp(17px, 1.23vw, 20px); font-weight: 400; line-height: 1.55; letter-spacing: -.012em; text-wrap: pretty; }
+.thought-quote figcaption { margin-top: 12px; color: #7b684f; font-size: 14px; line-height: 1.5; }
+.thought-quote a { text-decoration: none; text-underline-offset: 4px; }
+.thought-quote a:hover { text-decoration: underline; }
+.thought-quote.north-west { grid-area: 1 / 1; align-self: end; }
+.thought-quote.north-east { grid-area: 1 / 2; justify-self: end; border-color: #c6a381; align-self: start; margin-top: 28px; }
+.thought-quote.south-west { grid-area: 3 / 1; margin-top: 30px; }
+.thought-quote.south-east { grid-area: 3 / 2; justify-self: end; align-self: start; border-color: #b2c4d1; }
+.thought-lines { position: absolute; z-index: -1; left: 50%; top: 50%; width: 420px; height: 285px; transform: translate(-50%, -50%) rotate(-24deg); pointer-events: none; opacity: .65; }
+.thought-lines span { position: absolute; inset: -30px -36px; border: 1px solid #e2eae6; border-radius: 50%; }
+.thought-lines span:nth-child(2) { inset: -48px -55px; border-color: #ebe2d9; }
+.thought-lines span:nth-child(3) { inset: -66px -74px; border-color: #e6ecef; }
+.thought-footer { display: flex; justify-content: space-between; align-items: center; gap: 18px; border-top: 1px solid #e5e9e6; padding-top: 16px; }
+.thought-footer p { font-size: 13px; line-height: 1.65; color: #7a857f; }
+.thought-footer-break { display: none; }
+.thought-pause[data-slot=button] { color: #64746c; font-size: 13px; gap: 7px; padding: 0 11px; flex-shrink: 0; }
+.thought-pause svg { width: 15px; height: 15px; }
+.quotes-paused .thought-quote, .thought-stage:focus-within .thought-quote { animation-play-state: paused; }
+.login-constellation .login-side { padding: 68px 10%; background: #f8faf8; }
+.login-constellation .login-submit { justify-content: center; }
+@keyframes thought-appear {
+  0% { opacity: 0; visibility: hidden; transform: translateY(5px); }
+  2% { opacity: 0; visibility: visible; transform: translateY(5px); }
+  5%, 18% { opacity: 1; visibility: visible; transform: translateY(0); }
+  21% { opacity: 0; visibility: hidden; transform: translateY(-3px); }
+  100% { opacity: 0; visibility: hidden; transform: translateY(-3px); }
+}
+@media (min-width: 1500px) {
+  .login-constellation .thought-story { padding: 44px 7% 28px; }
+  .thought-stage { column-gap: 65px; row-gap: 35px; }
+  .thought-quote { max-width: 355px; }
+}
+@media (max-width: 1100px) {
+  .login-page.login-constellation { grid-template-columns: minmax(0, 1.4fr) minmax(360px, 1fr); }
+  .login-constellation .thought-story { padding: 28px 6% 20px; }
+  .thought-stage { column-gap: 24px; grid-template-rows: minmax(205px, 1fr) auto minmax(170px, 1fr); row-gap: 18px; }
+  .thought-quote { padding-left: 12px; }
+  .thought-footer-break { display: block; }
+  .thought-lines { width: 300px; height: 250px; }
+}
+@media (max-width: 760px) {
+  .login-page.login-constellation { grid-template-columns: minmax(0, 1fr); }
+  .login-constellation .thought-story { padding: 26px 26px 20px; border-right: 0; border-bottom: 1px solid #e4e8e4; }
+  .thought-stage { margin-top: 20px; grid-template-rows: minmax(145px, auto) auto minmax(135px, auto); column-gap: 28px; row-gap: 12px; }
+  .thought-story .thought-center h1 { font-size: 48px; }
+  .thought-center { padding: 12px 0; }
+  .thought-quote blockquote { font-size: 17px; }
+  .thought-footer-break { display: none; }
+  .login-constellation .login-side { padding: 50px 28px 76px; }
+}
+@media (max-width: 460px) {
+  .thought-stage { grid-template-rows: minmax(150px, auto) auto minmax(150px, auto); }
+  .thought-quote { max-width: 290px; }
+  .thought-quote.north-west, .thought-quote.north-east { grid-column: 1 / -1; align-self: center; margin-top: 0; }
+  .thought-quote.south-west, .thought-quote.south-east { grid-column: 1 / -1; align-self: center; margin-top: 0; }
+  .thought-quote.north-east, .thought-quote.south-east { justify-self: end; }
+  .thought-story .thought-center h1 { font-size: 43px; }
+  .thought-center .eyebrow { font-size: 10px; letter-spacing: .1em; }
+  .thought-footer p { font-size: 12px; }
+  .thought-footer-break { display: block; }
+  /* On narrow screens, fewer simultaneous lines need the same breathing room. */
+  .thought-quote { animation-name: thought-appear-narrow; }
+}
+@keyframes thought-appear-narrow {
+  0% { opacity: 0; visibility: hidden; }
+  2% { opacity: 0; visibility: visible; }
+  4%, 13% { opacity: 1; visibility: visible; }
+  14.2%, 100% { opacity: 0; visibility: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .thought-stage { row-gap: 28px; grid-template-rows: auto; }
+  .thought-center { grid-row: 2; }
+  .thought-quote { animation: none !important; opacity: 1; visibility: visible; transform: none; }
+  .thought-quote:nth-of-type(n) { grid-area: auto; margin: 0; align-self: start; justify-self: stretch; }
+  .thought-quote:nth-of-type(1) { grid-area: 1 / 1 / 2 / -1; max-width: none; }
+  .thought-pause { display: none !important; }
+}
